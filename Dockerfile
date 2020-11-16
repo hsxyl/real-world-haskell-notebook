@@ -13,7 +13,8 @@ USER root
 RUN mkdir /home/$NB_USER/learn_you_a_haskell
 COPY notebook/*.ipynb /home/$NB_USER/learn_you_a_haskell/
 COPY notebook/img /home/$NB_USER/learn_you_a_haskell/img
-RUN chown --recursive $NB_UID:users /home/$NB_USER/learn_you_a_haskell
+RUN chown --recursive $NB_UID:users /home/$NB_USER/learn_you_a_haskell \
+    && jupyter labextension install @axlair/jupyterlab_vim
 
 USER $NB_UID
 
